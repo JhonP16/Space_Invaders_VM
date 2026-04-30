@@ -1,0 +1,679 @@
+function Rocket.new 0
+push constant 2
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 0
+push argument 1
+pop this 1
+push pointer 0
+return
+function Rocket.draw 0
+push argument 0
+pop pointer 0
+push pointer 0
+push constant 0
+not
+call Rocket.drawBitmap 2
+pop temp 0
+push constant 0
+return
+function Rocket.erase 0
+push argument 0
+pop pointer 0
+push pointer 0
+push constant 0
+call Rocket.drawBitmap 2
+pop temp 0
+push constant 0
+return
+function Rocket.moveLeft 0
+push argument 0
+pop pointer 0
+push this 0
+push argument 2
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+call Rocket.erase 1
+pop temp 0
+push this 0
+push argument 1
+sub
+pop this 0
+push pointer 0
+call Rocket.draw 1
+pop temp 0
+label IF_FALSE0
+push constant 0
+return
+function Rocket.moveRight 0
+push argument 0
+pop pointer 0
+push this 0
+push argument 2
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+call Rocket.erase 1
+pop temp 0
+push this 0
+push argument 1
+add
+pop this 0
+push pointer 0
+call Rocket.draw 1
+pop temp 0
+label IF_FALSE0
+push constant 0
+return
+function Rocket.drawBitmap 2
+push argument 0
+pop pointer 0
+push this 1
+push constant 32
+call Math.multiply 2
+push this 0
+push constant 16
+call Math.divide 2
+add
+pop local 0
+push constant 16384
+push local 0
+add
+pop local 1
+push pointer 0
+push local 1
+push constant 15872
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 32
+add
+push constant 16640
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 64
+add
+push constant 32640
+neg
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 96
+add
+push constant 32640
+neg
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 128
+add
+push constant 64
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 160
+add
+push constant 64
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 192
+add
+push constant 32
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 224
+add
+push constant 32
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 256
+add
+push constant 15904
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 288
+add
+push constant 16656
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 320
+add
+push constant 32624
+neg
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 352
+add
+push constant 32624
+neg
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 384
+add
+push constant 16656
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 416
+add
+push constant 15888
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 448
+add
+push constant 16
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 480
+add
+push constant 24
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 512
+add
+push constant 20
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 544
+add
+push constant 18
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 576
+add
+push constant 8750
+neg
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 608
+add
+push constant 27311
+neg
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 640
+add
+push constant 29231
+neg
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 672
+add
+push constant 27311
+neg
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 704
+add
+push constant 17
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 736
+add
+push constant 5137
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 768
+add
+push constant 5137
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 800
+add
+push constant 5137
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 832
+add
+push constant 17
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 864
+add
+push constant 17
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 896
+add
+push constant 41
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 928
+add
+push constant 59
+neg
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 960
+add
+push constant 66
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 992
+add
+push constant 32
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 1024
+add
+push constant 32
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 1056
+add
+push constant 64
+neg
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 1088
+add
+push constant 32
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 1120
+add
+push constant 32
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 1152
+add
+push constant 64
+neg
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 129
+add
+push constant 1
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 161
+add
+push constant 1
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 193
+add
+push constant 2
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 225
+add
+push constant 2
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 257
+add
+push constant 2
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 289
+add
+push constant 4
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 321
+add
+push constant 4
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 353
+add
+push constant 4
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 385
+add
+push constant 4
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 417
+add
+push constant 4
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 449
+add
+push constant 4
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 481
+add
+push constant 12
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 513
+add
+push constant 20
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 545
+add
+push constant 36
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 577
+add
+push constant 37
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 609
+add
+push constant 68
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 641
+add
+push constant 68
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 673
+add
+push constant 68
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 705
+add
+push constant 68
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 737
+add
+push constant 68
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 769
+add
+push constant 68
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 801
+add
+push constant 68
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 833
+add
+push constant 68
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 865
+add
+push constant 68
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 897
+add
+push constant 74
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 929
+add
+push constant 81
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 961
+add
+push constant 33
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 993
+add
+push constant 2
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 1025
+add
+push constant 2
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 1057
+add
+push constant 1
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 1089
+add
+push constant 2
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 1121
+add
+push constant 2
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push pointer 0
+push local 1
+push constant 1153
+add
+push constant 1
+push argument 1
+call Rocket.blit 4
+pop temp 0
+push constant 0
+return
+function Rocket.blit 0
+push argument 0
+pop pointer 0
+push argument 3
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 1
+push argument 2
+call Memory.poke 2
+pop temp 0
+goto IF_END0
+label IF_FALSE0
+push argument 1
+push constant 0
+call Memory.poke 2
+pop temp 0
+label IF_END0
+push constant 0
+return

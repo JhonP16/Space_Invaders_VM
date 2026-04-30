@@ -1,0 +1,41 @@
+class Game { // Clase para manejar el mivimiento del cohete y la lógica del juego
+    field Rocket rocket;
+    field int minX, maxX, step;
+
+    constructor Game new() {
+        let rocket = Rocket.new(240, 176);
+        let minX = 16;
+        let maxX = 464;
+        let step = 16;
+        return this;
+    }
+
+    method void run() {
+        do Screen.clearScreen();
+        do Screen.setColor(true);
+        do Scene.drawStatic();
+        do rocket.draw();
+
+        while (true) {
+            do update();
+        }
+
+        return;
+    }
+
+    method void update() {
+        var int key;
+
+        let key = Keyboard.keyPressed();
+        if (key = 130) {
+            do rocket.moveLeft(step, minX);
+        } else {
+            if (key = 132) {
+                do rocket.moveRight(step, maxX);
+            }
+        }
+
+        do Sys.wait(100);
+        return;
+    }
+}

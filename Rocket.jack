@@ -1,0 +1,128 @@
+class Rocket {
+    field int x, y;
+
+    constructor Rocket new(int startX, int startY) {
+        let x = startX;
+        let y = startY;
+        return this;
+    }
+
+    method void draw() {
+        do drawBitmap(true);
+        return;
+    }
+
+    method void erase() {
+        do drawBitmap(false);
+        return;
+    }
+
+    method void moveLeft(int step, int minX) {
+        if (x > minX) {
+            do erase();
+            let x = x - step;
+            do draw();
+        }
+        return;
+    }
+
+    method void moveRight(int step, int maxX) {
+        if (x < maxX) {
+            do erase();
+            let x = x + step;
+            do draw();
+        }
+        return;
+    }
+
+    method void drawBitmap(boolean on) {
+        var int location, memAddress;
+
+        let location = (y * 32) + (x / 16);
+        let memAddress = 16384 + location;
+
+        // column 0
+        do blit(memAddress, 15872, on);
+        do blit(memAddress + 32, 16640, on);
+        do blit(memAddress + 64, -32640, on);
+        do blit(memAddress + 96, -32640, on);
+        do blit(memAddress + 128, 64, on);
+        do blit(memAddress + 160, 64, on);
+        do blit(memAddress + 192, 32, on);
+        do blit(memAddress + 224, 32, on);
+        do blit(memAddress + 256, 15904, on);
+        do blit(memAddress + 288, 16656, on);
+        do blit(memAddress + 320, -32624, on);
+        do blit(memAddress + 352, -32624, on);
+        do blit(memAddress + 384, 16656, on);
+        do blit(memAddress + 416, 15888, on);
+        do blit(memAddress + 448, 16, on);
+        do blit(memAddress + 480, 24, on);
+        do blit(memAddress + 512, 20, on);
+        do blit(memAddress + 544, 18, on);
+        do blit(memAddress + 576, -8750, on);
+        do blit(memAddress + 608, -27311, on);
+        do blit(memAddress + 640, -29231, on);
+        do blit(memAddress + 672, -27311, on);
+        do blit(memAddress + 704, 17, on);
+        do blit(memAddress + 736, 5137, on);
+        do blit(memAddress + 768, 5137, on);
+        do blit(memAddress + 800, 5137, on);
+        do blit(memAddress + 832, 17, on);
+        do blit(memAddress + 864, 17, on);
+        do blit(memAddress + 896, 41, on);
+        do blit(memAddress + 928, -59, on);
+        do blit(memAddress + 960, 66, on);
+        do blit(memAddress + 992, 32, on);
+        do blit(memAddress + 1024, 32, on);
+        do blit(memAddress + 1056, -64, on);
+        do blit(memAddress + 1088, 32, on);
+        do blit(memAddress + 1120, 32, on);
+        do blit(memAddress + 1152, -64, on);
+
+        // column 1
+        do blit(memAddress + 129, 1, on);
+        do blit(memAddress + 161, 1, on);
+        do blit(memAddress + 193, 2, on);
+        do blit(memAddress + 225, 2, on);
+        do blit(memAddress + 257, 2, on);
+        do blit(memAddress + 289, 4, on);
+        do blit(memAddress + 321, 4, on);
+        do blit(memAddress + 353, 4, on);
+        do blit(memAddress + 385, 4, on);
+        do blit(memAddress + 417, 4, on);
+        do blit(memAddress + 449, 4, on);
+        do blit(memAddress + 481, 12, on);
+        do blit(memAddress + 513, 20, on);
+        do blit(memAddress + 545, 36, on);
+        do blit(memAddress + 577, 37, on);
+        do blit(memAddress + 609, 68, on);
+        do blit(memAddress + 641, 68, on);
+        do blit(memAddress + 673, 68, on);
+        do blit(memAddress + 705, 68, on);
+        do blit(memAddress + 737, 68, on);
+        do blit(memAddress + 769, 68, on);
+        do blit(memAddress + 801, 68, on);
+        do blit(memAddress + 833, 68, on);
+        do blit(memAddress + 865, 68, on);
+        do blit(memAddress + 897, 74, on);
+        do blit(memAddress + 929, 81, on);
+        do blit(memAddress + 961, 33, on);
+        do blit(memAddress + 993, 2, on);
+        do blit(memAddress + 1025, 2, on);
+        do blit(memAddress + 1057, 1, on);
+        do blit(memAddress + 1089, 2, on);
+        do blit(memAddress + 1121, 2, on);
+        do blit(memAddress + 1153, 1, on);
+        return;
+    }
+
+    method void blit(int address, int value, boolean on) {
+        if (on) {
+            do Memory.poke(address, value);
+        } else {
+            do Memory.poke(address, 0);
+        }
+        return;
+    }
+}

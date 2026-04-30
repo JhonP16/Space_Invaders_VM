@@ -1,0 +1,136 @@
+class Scene {
+    function void draw() {
+        do Screen.clearScreen();
+        do Screen.setColor(true);
+
+        do Scene.drawStatic();
+
+        return;
+    }
+
+    function void drawStatic() {
+        do Scene.drawFrame();
+        do Scene.drawEnemies();
+        do Scene.drawMoon(400, 110);
+        do Scene.drawTitle();
+        return;
+    }
+
+    function void drawFrame() {
+        var int groundY;
+
+        let groundY = 230;
+
+        do Screen.setColor(true);
+        do Screen.drawRectangle(0, 0, 511, 2);
+        do Screen.drawRectangle(0, 0, 2, groundY);
+        do Screen.drawRectangle(509, 0, 511, groundY);
+        do Screen.drawRectangle(0, groundY, 511, groundY + 2);
+
+        return;
+    }
+
+    function void drawTitle() {
+        do Output.moveCursor(1, 18);
+        do Output.printString("SPACE INVADERS");
+        return;
+    }
+
+    function void drawEnemies() {
+        var int rows, cols, row, col;
+        var int startX, startY, width, height, gapX, gapY, stepX, stepY;
+        var int x, y;
+        var int totalWidth;
+
+        let rows = 3;
+        let cols = 6;
+        let width = 16;
+        let height = 12;
+        let gapX = 16;
+        let gapY = 14;
+        let stepX = width + gapX;
+        let stepY = height + gapY;
+        let totalWidth = (cols * width) + ((cols - 1) * gapX);
+        let startX = (512 - totalWidth) / 2;
+        let startY = 36;
+
+        let row = 0;
+        while (row < rows) {
+            let col = 0;
+            while (col < cols) {
+                let x = startX + (col * stepX);
+                let y = startY + (row * stepY);
+                do Scene.drawEnemy(x, y);
+                let col = col + 1;
+            }
+            let row = row + 1;
+        }
+
+        return;
+    }
+
+    function void drawEnemy(int x, int y) {
+        var int x2, y2;
+
+        let x2 = x + 15;
+        let y2 = y + 11;
+
+        do Screen.setColor(true);
+        do Screen.drawRectangle(x, y, x2, y2);
+
+        do Screen.setColor(false);
+        do Screen.drawRectangle(x + 5, y + 5, x + 5, y + 5);
+        do Screen.drawRectangle(x + 10, y + 5, x + 10, y + 5);
+
+        do Screen.setColor(true);
+        return;
+    }
+
+    function void drawMoon(int x, int y) {
+        var int location, memAddress;
+
+        let location = (y * 32) + (x / 16);
+        let memAddress = 16384 + location;
+
+        // column 0
+        do Memory.poke(memAddress, -8192);
+        do Memory.poke(memAddress + 32, ~32767);
+        do Memory.poke(memAddress + 384, 1);
+        do Memory.poke(memAddress + 416, 1);
+        do Memory.poke(memAddress + 448, 3);
+        do Memory.poke(memAddress + 480, 2);
+        do Memory.poke(memAddress + 512, 6);
+        do Memory.poke(memAddress + 544, -32740);
+        do Memory.poke(memAddress + 576, 24676);
+        do Memory.poke(memAddress + 608, 8072);
+        do Memory.poke(memAddress + 640, 16);
+        do Memory.poke(memAddress + 672, 96);
+        do Memory.poke(memAddress + 704, 384);
+        do Memory.poke(memAddress + 736, -512);
+
+        // column 1
+        do Memory.poke(memAddress + 33, 3);
+        do Memory.poke(memAddress + 65, 14);
+        do Memory.poke(memAddress + 97, 20);
+        do Memory.poke(memAddress + 129, 36);
+        do Memory.poke(memAddress + 161, 104);
+        do Memory.poke(memAddress + 193, 72);
+        do Memory.poke(memAddress + 225, 144);
+        do Memory.poke(memAddress + 257, 144);
+        do Memory.poke(memAddress + 289, 272);
+        do Memory.poke(memAddress + 321, 272);
+        do Memory.poke(memAddress + 353, 272);
+        do Memory.poke(memAddress + 385, 264);
+        do Memory.poke(memAddress + 417, 264);
+        do Memory.poke(memAddress + 449, 260);
+        do Memory.poke(memAddress + 481, 132);
+        do Memory.poke(memAddress + 513, 130);
+        do Memory.poke(memAddress + 545, 65);
+        do Memory.poke(memAddress + 577, 64);
+        do Memory.poke(memAddress + 609, 32);
+        do Memory.poke(memAddress + 641, 16);
+        do Memory.poke(memAddress + 673, 12);
+        do Memory.poke(memAddress + 705, 3);
+        return;
+    }
+}
