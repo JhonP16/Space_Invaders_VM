@@ -1,0 +1,64 @@
+class Bullet {
+    field int x, y;
+    field boolean active;
+
+    constructor Bullet new() {
+        let active = false;
+        return this;
+    }
+
+    method void fire(int startX, int startY) {
+        let x = startX;
+        let y = startY;
+        let active = true;
+        do draw();
+        return;
+    }
+
+    method void move() {
+        if (active) {
+            do erase();
+            let y = y - 7;
+            if (y < 4) {
+                let active = false;
+            } else {
+                do draw();
+            }
+        }
+        return;
+    }
+
+    method void draw() {
+        if (active) {
+            do Screen.setColor(true);
+            do Screen.drawRectangle(x, y, x + 1, y + 3);
+        }
+        return;
+    }
+
+    method void erase() {
+        if (active) {
+            do Screen.setColor(false);
+            do Screen.drawRectangle(x, y, x + 1, y + 3);
+        }
+        return;
+    }
+
+    method boolean isActive() {
+        return active;
+    }
+
+    method void deactivate() {
+        do erase();
+        let active = false;
+        return;
+    }
+
+    method int getX() { return x; }
+    method int getY() { return y; }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+}
