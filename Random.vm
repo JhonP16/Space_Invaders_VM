@@ -1,0 +1,46 @@
+function Random.setSeed 0
+    push argument 0
+    pop static 0
+    push constant 0
+    return
+function Random.rand 0
+    push static 0
+    push constant 25173
+    call Math.multiply 2
+    push constant 13849
+    add
+    pop static 0
+    push static 0
+    push constant 0
+    lt
+    not
+    if-goto Random_1
+    push static 0
+    neg
+    pop static 0
+    goto Random_0
+label Random_1
+label Random_0
+    push static 0
+    return
+function Random.randRange 1
+    push argument 0
+    push constant 0
+    eq
+    not
+    if-goto Random_3
+    push constant 0
+    return
+    goto Random_2
+label Random_3
+label Random_2
+    call Random.rand 0
+    pop local 0
+    push local 0
+    push local 0
+    push argument 0
+    call Math.divide 2
+    push argument 0
+    call Math.multiply 2
+    sub
+    return
